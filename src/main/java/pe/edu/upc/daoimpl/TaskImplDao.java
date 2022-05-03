@@ -50,9 +50,6 @@ public class TaskImplDao implements ITaskDao {
 		}
 
 	}
-<<<<<<< HEAD
-=======
-
 	@Override
 	public void update(Task t) {
 		try {
@@ -63,5 +60,4 @@ public class TaskImplDao implements ITaskDao {
 		}
 		
 	}
->>>>>>> 5bb18c4 (Se agrega la entidad Task)
 }
