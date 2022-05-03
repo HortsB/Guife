@@ -10,6 +10,8 @@
 		<class>pe.edu.upc.entidades.Appointment</class>
 		<class>pe.edu.upc.entidades.Country</class>
 		<class>pe.edu.upc.entidades.Task</class>
+		<class>pe.edu.upc.entidades.Schedule</class>
+		<class>pe.edu.upc.entidades.Customer</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
