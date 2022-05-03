@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h:form>
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel value="Nombre de Cliente:" for="name"
+							styleClass="control-label" />
+						<p:inputText id="name" styleClass="form-control"
+							value="#{customerController.cu.descriptionCustomer}" />
+					</div>
+				</div>
+				<div class="col -sm-8 text-right">
+					<div class="form-group box-main-btn">
+						<p:commandButton value="Buscar" update="lstClientes"
+							actionListener="#{customerController.findByNameCustomer()}"
+							styleClass="btn btn-default btn-border" />
+
+						<p:commandButton value="Limpiar" update="lstClientes"
+							actionListener="#{customerController.list()}"
+							styleClass="btn btn-default" />
+					</div>
+				</div>
+			</div>
+
+			<p:dataTable id="lstClientes" var="cu"
+				value="#{customerController.listaClientes}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
+				rows="10" emptyMessage="No existen registros" rowIndexVar="item">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{cu.idCustomer}" />
+				</p:column>
+
+				<p:column headerText="Persona">
+					<h:outputText value="#{cu.person.fullNamePerson}" />
+				</p:column>
+
+				<p:column headerText="Descripción">
+					<h:outputText value="#{cu.descriptionCustomer}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<h:commandLink action="#{customerController.updatePre(cu)}"
+						value="Modificar" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listCustomer"
+						actionListener="#{customerController.delete(cu)}">
+					Eliminar
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

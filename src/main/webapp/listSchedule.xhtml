@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h:form>
+
+			<p:dataTable id="lstCalendario" var="s"
+				value="#{scheduleController.listaCalendario}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
+				rows="10" emptyMessage="No existen registros" rowIndexVar="item">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{s.idSchedule}" />
+				</p:column>
+
+				<p:column headerText="Persona">
+					<h:outputText value="#{s.customer.person.nickNamePerson}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<h:commandLink action="#{scheduleController.updatePre(s)}"
+						value="Modificar" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="lstCalendario"
+						actionListener="#{scheduleController.delete(s)}">
+					Eliminar
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
