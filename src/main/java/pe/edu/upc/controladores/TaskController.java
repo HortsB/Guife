@@ -15,11 +15,6 @@ import pe.edu.upc.service.ITaskService;
 @RequestScoped
 public class TaskController {
 	
-<<<<<<< HEAD
-	@SuppressWarnings("cdi-ambiguous-dependency")
-=======
-	
->>>>>>> 5bb18c4 (Se agrega la entidad Task)
 	@Inject
 	private ITaskService tService;
 
@@ -63,10 +58,9 @@ public class TaskController {
 			System.out.println("Error al eliminar en controller task");
 		}
 	}
-<<<<<<< HEAD
-=======
-	public String updateTask(Task t) {
-		this.setT(t);return "updateTask.xhtml";
+	public String updateTaskk(Task t) {
+		this.setT(t);
+		return "updateTask.xhtml";
 	}
 	public void update() {
 		try {
@@ -76,8 +70,6 @@ public class TaskController {
 
 		}
 	}
->>>>>>> 5bb18c4 (Se agrega la entidad Task)
-
 	public Task getT() {
 		return t;
 	}
