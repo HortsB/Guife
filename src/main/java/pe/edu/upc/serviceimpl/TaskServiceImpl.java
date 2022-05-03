@@ -29,13 +29,10 @@ public void delete(int idTask) {
 	tDao.delete(idTask);
 }
 
-<<<<<<< HEAD
-=======
 @Override
 public void update(Task t) {
 	// TODO Auto-generated method stub
 	tDao.update(t);
 }
 
->>>>>>> 5bb18c4 (Se agrega la entidad Task)
 }
