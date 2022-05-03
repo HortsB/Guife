@@ -104,5 +104,22 @@ public class Person {
 	public void setCityPerson(String cityPerson) {
 		this.cityPerson = cityPerson;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(idPerson);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		return idPerson == other.idPerson;
+	}
+	
 
 }
