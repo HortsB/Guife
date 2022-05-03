@@ -50,4 +50,18 @@ public class TaskImplDao implements ITaskDao {
 		}
 
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public void update(Task t) {
+		try {
+			em.merge(t);
+		}catch(Exception e) {
+			System.out.println("Error al modificar una tarea ");
+
+		}
+		
+	}
+>>>>>>> 5bb18c4 (Se agrega la entidad Task)
 }
