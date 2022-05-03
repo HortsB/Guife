@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+
+		<h2>Lista de Administradores</h2>
+		<h:form>
+			<p:dataTable id="lstAdministradores" var="ad"
+				value="#{administratorController.listaAdministradores}"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				emptyMessage="No existen registros" rowsIndexVar="item">
+
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ad.idPerson}" />
+				</p:column>
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{ad.fullNamePerson}" />
+				</p:column>
+
+				<p:column headerText="NickName">
+					<h:outputText value="#{ad.nickNamePerson}" />
+				</p:column>
+
+				<p:column headerText="Correo">
+					<h:outputText value="#{ad.mailPerson}" />
+				</p:column>
+
+				<p:column headerText="Teléfono">
+					<h:outputText value="#{ad.phonePerson}" />
+				</p:column>
+
+				<p:column headerText="Contraseña">
+					<h:outputText value="#{ad.passwordPerson}" />
+				</p:column>
+
+				<p:column headerText="País">
+					<h:outputText value="#{ad.cityPerson}" />
+				</p:column>
+				<p:column headerText="Modificar">
+					<h:commandLink action="#{administratorController.updatePree(ad)}"
+						value="Modificar" />
+				</p:column>
+				<p:column headerText="Eliminar">
+					<h:commandLink action="listAdministrator"
+						actionListener="#{administratorController.delete(ad)}">
+					Eliminar
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
