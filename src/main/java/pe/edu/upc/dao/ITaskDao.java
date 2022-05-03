@@ -10,8 +10,5 @@ public interface ITaskDao {
 	public List<Task> list();
 	
 	public void delete(int idTask);
-<<<<<<< HEAD
-=======
 	public void update(Task t);
->>>>>>> 5bb18c4 (Se agrega la entidad Task)
 }
