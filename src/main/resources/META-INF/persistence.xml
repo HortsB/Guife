@@ -6,6 +6,7 @@
 	<persistence-unit name="Guife" transaction-type="JTA">
 		<jta-data-source>java:/guifeeDS</jta-data-source>
 		<class>pe.edu.upc.entidades.Person</class>
+		<class>pe.edu.upc.entidades.Administrator</class>
 		<class>pe.edu.upc.entidades.Appointment</class>
 		<class>pe.edu.upc.entidades.Country</class>
 		<class>pe.edu.upc.entidades.Task</class>
