@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de Citas</h2>
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{appointmentController.a.idAppointment}" required="true" />
+
+			<h:outputLabel value="Fecha:" for="fecha"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{appointmentController.a.dateAppointment}" showOn="button"
+				timeZone="America/Mexico_City" required="true" />
+			<br />
+			
+			<h:outputLabel value="Descripción:" for="descripción"
+				styleClass="control-label" />
+			<p:inputText id="descripción" styleClass="form-control"
+				value="#{appointmentController.a.descriptionAppointment}" required="true" />
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{appointmentController.insert()}"
+				action="listCitas?faces-redirect=true" update="@form" />
+				
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

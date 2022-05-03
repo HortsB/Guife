@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de citas</h2>
+		<h:form>
+			<p:dataTable id="lstCitas" var="ap"
+				value="#{appointmentController.listAppointment}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				emptyMessage="No existen registros" rowsIndexVar="item">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ap.idAppointment}" />
+				</p:column>
+
+				<p:column headerText="Fecha">
+					<h:outputText value="#{ap.dateAppointment}">
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Descripción">
+					<h:outputText value="#{ap.descriptionAppointment}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listAppointment"
+						actionListener="#{appointmentController.delete(ap)}">
+					Eliminar
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
