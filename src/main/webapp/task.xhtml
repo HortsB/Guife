@@ -18,11 +18,22 @@
 			<p:inputText id="tarea" styleClass="form-control"
 				value="#{taskController.t.tittleTask}" required="true" />
 
+<<<<<<< HEAD
+=======
+			<h:outputLabel value="Descripcion de la tarea" for="descripcion"
+				styleClass="control-label" />
+			<p:inputText id="descripcion" styleClass="form-control"
+				value="#{taskController.t.descriptionTask}" required="true" />
+>>>>>>> 5bb18c4 (Se agrega la entidad Task)
 
 			<h:outputLabel value="Estado de tarea" for="status"
 				styleClass="control-label" />
 			<p:inputText id="status" styleClass="form-control"
+<<<<<<< HEAD
 				value="#{taskController.t.statusDask}" required="true" />
+=======
+				value="#{taskController.t.statusTask}" required="true" />
+>>>>>>> 5bb18c4 (Se agrega la entidad Task)
 
 			<h:outputLabel value="Fecha de tarea" for="date"
 				styleClass="control-label" />
@@ -34,7 +45,11 @@
 
 			<p:commandButton value="Grabar"
 				actionListener="#{taskController.insert()}"
+<<<<<<< HEAD
 				action="listaTareas?faces-redirect=true" update="@form" />
+=======
+				action="listTarea?faces-redirect=true" update="@form" />
+>>>>>>> 5bb18c4 (Se agrega la entidad Task)
 
 		</h:form>
 	</ui:define>
