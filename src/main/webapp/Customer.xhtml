@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de vacunación</h2>
+		<h:form>
+
+			<h:outputLabel value="Id de Cliente" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{customerController.cu.idCustomer}" required="true" />
+
+			<h:outputLabel value="Persona" for="cboPersona"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPersona"
+				value="#{customerController.cu.person}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{customerController.listaPersonas}" var="p"
+					itemLabel="#{p.fullNamePerson}" itemValue="#{p}" />
+			</p:selectOneMenu>
+
+
+			<h:outputLabel for="name" value="Descripción: "
+				styleClass="control-label" />
+			<p:inputText id="name" styleClass="form-control"
+				value="#{customerController.cu.descriptionCustomer}" maxlength="100"
+				required="true" />
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{customerController.insert()}"
+				action="listCustomer?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary"></p:commandButton>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
