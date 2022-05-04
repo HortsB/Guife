@@ -12,6 +12,7 @@
 		<class>pe.edu.upc.entidades.Task</class>
 		<class>pe.edu.upc.entidades.Schedule</class>
 		<class>pe.edu.upc.entidades.Customer</class>
+		<class>pe.edu.upc.entidades.Specialist</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
