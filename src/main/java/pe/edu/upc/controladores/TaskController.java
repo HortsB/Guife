@@ -1,4 +1,5 @@
 package pe.edu.upc.controladores;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,82 +7,75 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import pe.edu.upc.entidades.Task;
 import pe.edu.upc.service.ITaskService;
 
 @Named
 @RequestScoped
 public class TaskController {
-
+	
 	@Inject
 	private ITaskService tService;
-	private Task ta;
+
+	private Task t;
 	List<Task> listaTareas;
-	
+
 	@PostConstruct
 	public void init() {
-		this.listaTareas=new ArrayList<Task>();
-		this.ta=new Task();
+		this.listaTareas = new ArrayList<Task>();
+		this.t = new Task();
 		this.list();
 	}
-	
+
 	public String newTask() {
-		this.setTa(new Task());
+		this.setT(new Task());
 		return "task.xhtml";
 	}
-	
+
 	public void insert() {
 		try {
-			tService.insert(ta);
+			tService.insert(t);
+
 		} catch (Exception e) {
-			System.out.println("Error al insertar en el controller tarea");
+			System.out.println("Error al insertar en el controller task");
 		}
 	}
-	
+
 	public void list() {
 		try {
-			listaTareas=tService.list();
+			listaTareas = tService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar en el controller tarea");
+			System.out.println("Error al listar en controller tareas");
 		}
 	}
-	
-	public void delete(Task tas) {
+
+	public void delete(Task t) {
 		try {
-			tService.delete(tas.getIdTask());
+			tService.delete(t.getIdTask());
+			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controller tarea");
+			System.out.println("Error al eliminar en controller task");
 		}
 	}
-	
-	public String updatePree(Task ta) {
-		this.setTa(ta);
+	public String updateTaskk(Task t) {
+		this.setT(t);
 		return "updateTask.xhtml";
 	}
-	
 	public void update() {
 		try {
-			tService.update(this.ta);
-		} catch (Exception e) {
-			System.out.println("Error al modificar en el controller tarea");
+			tService.update(this.t);
+		}catch(Exception e) {
+			System.out.println("Error al actualizar en controller task");
+
 		}
 	}
-	
-
-	public ITaskService gettService() {
-		return tService;
+	public Task getT() {
+		return t;
 	}
 
-	public void settService(ITaskService tService) {
-		this.tService = tService;
-	}
-
-	public Task getTa() {
-		return ta;
-	}
-
-	public void setTa(Task ta) {
-		this.ta = ta;
+	public void setT(Task t) {
+		this.t = t;
 	}
 
 	public List<Task> getListaTareas() {
@@ -91,7 +85,4 @@ public class TaskController {
 	public void setListaTareas(List<Task> listaTareas) {
 		this.listaTareas = listaTareas;
 	}
-	
-	
-	
 }
