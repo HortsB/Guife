@@ -6,43 +6,44 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="master.xhtml">
-	<h:head></h:head>
 	<ui:define name="content">
-		<h2>Registro de Tarea</h2>
+		<h2>Registro de tareas</h2>
 		<h:form>
-
 			<h:outputLabel value="Id" for="id" styleClass="control-label" />
 			<p:inputText id="id" styleClass="form-control"
-				value="#{taskController.ta.idTask}" required="true" />
+				value="#{taskController.t.idTask}" required="true" />
+
+			<h:outputLabel value="Titulo de tarea" for="tarea"
+				styleClass="control-label" />
+			<p:inputText id="tarea" styleClass="form-control"
+				value="#{taskController.t.tittleTask}" required="true" />
 
 
-			<h:outputLabel value="Descripcion:" for="descripcion"
+			<h:outputLabel value="Descripcion de la tarea" for="descripcion"
 				styleClass="control-label" />
 			<p:inputText id="descripcion" styleClass="form-control"
-				value="#{taskController.ta.descriptionTask}" required="true" />
+				value="#{taskController.t.descriptionTask}" required="true" />
 
-			<h:outputLabel value="Estado:" for="estado"
+
+			<h:outputLabel value="Estado de tarea" for="status"
 				styleClass="control-label" />
-			<p:inputText id="estado" styleClass="form-control"
-				value="#{taskController.ta.statusTask}" required="true" />
+			<p:inputText id="status" styleClass="form-control"
+			value="#{taskController.t.statusTask}" required="true" />
 
 
-			<h:outputLabel value="Fecha:" for="fecha" styleClass="control-label" />
-			<p:calendar id="fecha" pattern="dd/MM/yyyy"
-				value="#{taskController.ta.dateTask}" showOn="button"
-				timeZone="America/Mexico_City" required="true" />
-			<br />
+			<h:outputLabel value="Fecha de tarea" for="date"
+					styleClass="control-label" />
+				<p:calendar id="date" pattern="dd/MM/yyyy"
+					value="#{taskController.t.dateTask}" showOn="button"
+					timeZone="America/Mexico_City" required="true" />
 
-			<h:outputLabel value="Actividad: " for="actividad"
-				styleClass="control-label" />
-			<p:inputText id="actividad" styleClass="form-control"
-				value="#{taskController.ta.activityTask}" required="true" />
 
-			<p:commandButton value="Grabar"
-				actionListener="#{taskController.insert()}"
-				action="listTask?faces-redirect=true" update="@form" />
 
+				<p:commandButton value="Grabar"
+					actionListener="#{taskController.insert()}"
+					action="listTarea?faces-redirect=true" update="@form" />
 		</h:form>
 	</ui:define>
+
 </ui:composition>
 </html>

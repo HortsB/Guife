@@ -6,43 +6,36 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="master.xhtml">
+
 	<h:head></h:head>
 	<ui:define name="content">
-		<h2>Registro de Tarea</h2>
-		<h:form>
+		<h2>Registro de tarea</h2>
+		<h:outputLabel value="Id" for="id" styleClass="control-label" />
+		<p:inputText id="id" styleClass="form-control"
+			value="#{taskController.t.idTask}" required="true" />
+		<h:outputLabel value="Titulo" for="tittle" styleClass="control-label" />
+		<p:inputText id="tittle" styleClass="form-control"
+			value="#{taskController.t.tittleTask}" required="true" />
+		<h:outputLabel value="Descripcion" for="descripcion"
+			styleClass="control-label" />
+		<p:inputText id="descripcion" styleClass="form-control"
+			value="#{taskController.t.descriptionTask}" required="true" />
+		<h:outputLabel value="Estado" for="estado" styleClass="control-label" />
+		<p:inputText id="estado" styleClass="form-control"
+			value="#{taskController.t.statusTask}" required="true" />
 
-			<h:outputLabel value="Id" for="id" styleClass="control-label" />
-			<p:inputText id="id" styleClass="form-control"
-				value="#{taskController.ta.idTask}" required="true" />
+		<h:outputLabel value="Fecha:" for="fecha" styleClass="control-label" />
+		<p:calendar id="fecha" pattern="dd/MM/yyyy"
+			value="#{taskController.t.dateTask}" showOn="button"
+			timeZone="America/Mexico_City" required="true" />
+		<br />
+
+		<p:commandButton value="Actualizar"
+			actionListener="#{taskController.update()}"
+			action="listTarea?faces-redirect=true" update="@form" />
 
 
-			<h:outputLabel value="Descripcion:" for="descripcion"
-				styleClass="control-label" />
-			<p:inputText id="descripcion" styleClass="form-control"
-				value="#{taskController.ta.descriptionTask}" required="true" />
-
-			<h:outputLabel value="Estado:" for="estado"
-				styleClass="control-label" />
-			<p:inputText id="estado" styleClass="form-control"
-				value="#{taskController.ta.statusTask}" required="true" />
-
-
-			<h:outputLabel value="Fecha:" for="fecha" styleClass="control-label" />
-			<p:calendar id="fecha" pattern="dd/MM/yyyy"
-				value="#{taskController.ta.dateTask}" showOn="button"
-				timeZone="America/Mexico_City" required="true" />
-			<br />
-
-			<h:outputLabel value="Actividad: " for="actividad"
-				styleClass="control-label" />
-			<p:inputText id="actividad" styleClass="form-control"
-				value="#{taskController.ta.activityTask}" required="true" />
-
-			<p:commandButton value="Actualizar"
-				actionListener="#{taskController.update()}"
-				action="listTask?faces-redirect=true" update="@form" />
-
-		</h:form>
 	</ui:define>
+
 </ui:composition>
 </html>

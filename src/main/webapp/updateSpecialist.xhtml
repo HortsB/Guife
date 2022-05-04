@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<h:head></h:head>
+	<ui:define name="content">
+		<h2>Registro de especialista</h2>
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{specialistController.sp.idSpecialist}" required="true" />
+
+			<h:outputLabel value="Nombre:" for="nombre"
+				styleClass="control-label" />
+			<p:inputText id="nombre" styleClass="form-control"
+				value="#{specialistController.sp.fullNameSpecialist}"
+				required="true" />
+			<h:outputLabel value="Nickname" for="nick" styleClass="control-label" />
+			<p:inputText id="nick" styleClass="form-control"
+				value="#{specialistController.sp.nickNameSpecialist}"
+				required="true" />
+
+			<h:outputLabel value="Telefono" for="phone"
+				styleClass="control-label" />
+			<p:inputText id="phone" styleClass="form-control"
+				value="#{specialistController.sp.phoneSpecialist}" required="true" />
+
+			<h:outputLabel value="Tipo de especialista" for="tipo"
+				styleClass="control-label" />
+			<p:inputText id="tipo" styleClass="form-control"
+				value="#{specialistController.sp.typeSpecialist}" required="true" />
+			<h:outputLabel value="Contraseña: " for="contraseña"
+				styleClass="control-label" />
+			<h:inputSecret id="Contraseña" styleClass="form-control"
+				value="#{specialistController.sp.passwordSpecialist}"
+				required="true" />
+
+			<h:outputLabel value="Descripcion del especialista" for="description"
+				styleClass="control-label" />
+			<p:inputText id="description" styleClass="form-control"
+				value="#{specialistController.sp.descriptionSpecialist}"
+				required="true" />
+				
+				<p:commandButton value="Actualizar"
+					actionListener="#{specialistController.update()}"
+					action="listSpecialist?faces-redirect=true" update="@form" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
