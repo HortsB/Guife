@@ -9,7 +9,9 @@
 
 	<h:head></h:head>
 	<ui:define name="content">
+<h:form>
 		<h2>Registro de tarea</h2>
+		
 		<h:outputLabel value="Id" for="id" styleClass="control-label" />
 		<p:inputText id="id" styleClass="form-control"
 			value="#{taskController.t.idTask}" required="true" />
@@ -33,7 +35,7 @@
 		<p:commandButton value="Actualizar"
 			actionListener="#{taskController.update()}"
 			action="listTarea?faces-redirect=true" update="@form" />
-
+</h:form>	
 
 	</ui:define>
 
