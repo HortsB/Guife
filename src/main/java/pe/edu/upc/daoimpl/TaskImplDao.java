@@ -1,4 +1,5 @@
 package pe.edu.upc.daoimpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,32 +10,30 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.ITaskDao;
 import pe.edu.upc.entidades.Task;
+
 public class TaskImplDao implements ITaskDao {
-	
-	@PersistenceContext(unitName="Guife")
+	@PersistenceContext(unitName = "Guife")
 	private EntityManager em;
-	
-	
+
 	@Transactional
 	@Override
-	public void insert(Task ta) {
+	public void insert(Task t) {
 		try {
-			em.persist(ta);
+			em.persist(t);
 		} catch (Exception e) {
-			System.out.println("Error al insertar tarea");
+			System.out.println("Error al insertar una tarea");
 		}
-		
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Task> list() {
 		List<Task> listaTareas = new ArrayList<Task>();
 		try {
-			Query jpql=em.createQuery("from Task ta");
-			listaTareas=(List<Task>) jpql.getResultList();
+			Query jpql = em.createQuery("from Task t");
+			listaTareas = (List<Task>) jpql.getResultList();
 		} catch (Exception e) {
-			System.out.println("Error al listar tareas");
+			System.out.println("Error al listar las tareas");
 		}
 		return listaTareas;
 	}
@@ -43,26 +42,24 @@ public class TaskImplDao implements ITaskDao {
 	@Override
 	public void delete(int idTask) {
 		try {
-			Task ta=em.find(Task.class, idTask);
-			em.remove(ta);
-		} catch (Exception e) {
-			System.out.println("Error al eliminar tarea");
-		}
-	}
+			Task t = em.find(Task.class, idTask);
 
-	
-	
+			em.remove(t);
+		} catch (Exception e) {
+			System.out.println("Error al eliminar una tarea");
+		}
+
+	}
 	@Transactional
 	@Override
-	public void update(Task ta) {
+	public void update(Task t) {
 		try {
-			em.merge(ta);
-		} catch (Exception e) {
-			System.out.println("Error al modificar tarea");
+			em.merge(t);
+		}catch(Exception e) {
+			System.out.println("Error al modificar una tarea ");
+
 		}
 		
 	}
-	
-	
-
 }
+
